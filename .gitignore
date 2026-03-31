@@ -1,0 +1,24 @@
+# AgentUnity
+
+# Build
+*.pyc
+__pycache__/
+*.egg-info/
+dist/
+build/
+
+# Env
+.env
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Data (local dev only)
+qdrant_data/
+
+# OS
+Thumbs.db
+.DS_Store

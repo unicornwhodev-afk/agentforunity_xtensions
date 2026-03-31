@@ -1,0 +1,10 @@
+# ── Heavy deps — installed at first pod boot, then locked in /workspace ──
+# Keep versions within known-compatible minor ranges for safer cold starts.
+
+vllm>=0.6.0,<0.7.0
+sentence-transformers>=3.2.0,<3.3.0
+FlagEmbedding>=1.2.0,<1.3.0
+peft>=0.13.0,<0.15.0
+# Pin transformers: 4.50+ blocks torch.load on torch<2.6 (CVE-2025-32434)
+# Base image is torch 2.4.0 — must stay below 4.50 until torch upgrade
+transformers>=4.45.0,<4.50.0

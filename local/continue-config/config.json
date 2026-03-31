@@ -1,0 +1,91 @@
+{
+  "models": [
+    {
+      "title": "AgentUnity (RunPod)",
+      "provider": "openai",
+      "model": "Qwen2.5-Coder-32B-Instruct-AWQ",
+      "apiBase": "https://RUNPOD_ID-8000.proxy.runpod.net/v1",
+      "apiKey": "YOUR_API_SECRET_KEY",
+      "contextLength": 32768,
+      "completionOptions": {
+        "temperature": 0.1,
+        "maxTokens": 8192
+      },
+      "systemMessage": "You are an expert Unity C# programmer working on a medieval fantasy-horror FPS game. You write clean, performant, idiomatic C# code. You have access to the Unity project via MCP-Unity tools."
+    },
+    {
+      "title": "AgentUnity Vision (RunPod)",
+      "provider": "openai",
+      "model": "Qwen2-VL-7B-Instruct",
+      "apiBase": "https://RUNPOD_ID-8001.proxy.runpod.net/v1",
+      "apiKey": "YOUR_API_SECRET_KEY",
+      "contextLength": 8192,
+      "completionOptions": {
+        "temperature": 0.1,
+        "maxTokens": 4096
+      }
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "AgentUnity Autocomplete",
+    "provider": "openai",
+    "model": "Qwen2.5-Coder-32B-Instruct-AWQ",
+    "apiBase": "https://RUNPOD_ID-8000.proxy.runpod.net/v1",
+    "apiKey": "YOUR_API_SECRET_KEY",
+    "contextLength": 8192,
+    "completionOptions": {
+      "temperature": 0.0,
+      "maxTokens": 512,
+      "stop": ["\n\n", "```"]
+    }
+  },
+  "embeddingsProvider": {
+    "provider": "openai",
+    "model": "bge-m3",
+    "apiBase": "https://RUNPOD_ID-8002.proxy.runpod.net/v1",
+    "apiKey": "none"
+  },
+  "reranker": {
+    "name": "openai",
+    "params": {
+      "model": "bge-reranker-v2-m3",
+      "apiBase": "https://RUNPOD_ID-8003.proxy.runpod.net",
+      "apiKey": "none"
+    }
+  },
+  "customCommands": [
+    {
+      "name": "unity-scene",
+      "description": "Describe or modify the current Unity scene",
+      "prompt": "Use the MCP-Unity tools to inspect or modify the current scene. {{{ input }}}"
+    },
+    {
+      "name": "unity-fix",
+      "description": "Fix Unity compilation errors",
+      "prompt": "Check the Unity console for errors using MCP-Unity tools, read the relevant scripts, and fix all compilation errors. Apply patches and recompile."
+    },
+    {
+      "name": "unity-test",
+      "description": "Run Unity tests and report results",
+      "prompt": "Run all EditMode tests via MCP-Unity, then report the results. If any tests fail, suggest fixes."
+    }
+  ],
+  "experimental": {
+    "modelRoles": {
+      "inlineEdit": "AgentUnity (RunPod)",
+      "applyCodeBlock": "AgentUnity (RunPod)"
+    }
+  },
+  "docs": [
+    {
+      "name": "Unity Manual",
+      "startUrl": "https://docs.unity3d.com/Manual/index.html",
+      "depth": 3
+    },
+    {
+      "name": "Unity Scripting API",
+      "startUrl": "https://docs.unity3d.com/ScriptReference/index.html",
+      "depth": 3
+    }
+  ]
+}

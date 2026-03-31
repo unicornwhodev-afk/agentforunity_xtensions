@@ -1,0 +1,15 @@
+{
+    "name": "com.agentunity.editor",
+    "version": "0.1.0",
+    "displayName": "AgentUnity Chat",
+    "description": "Unity Editor chat window connected to the AgentUnity RunPod AI server.",
+    "unity": "2021.3",
+    "documentationUrl": "",
+    "changelogUrl": "",
+    "licensesUrl": "",
+    "keywords": ["ai", "agent", "chat", "mcp"],
+    "author": {
+        "name": "AgentUnity"
+    },
+    "type": "tool"
+}

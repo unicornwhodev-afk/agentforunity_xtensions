@@ -1,0 +1,6 @@
+{
+    "Port": 8090,
+    "AllowRemoteConnections": true,
+    "RequestTimeoutSeconds": 75,
+    "EnableInfoLogs": true
+}

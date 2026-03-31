@@ -1,0 +1,26 @@
+# ── Inference ──
+vllm>=0.6.0
+openai>=1.50.0
+
+# ── Orchestration ──
+langgraph>=0.2.0
+langchain-core>=0.3.0
+langchain-openai>=0.2.0
+
+# ── API ──
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.9.0
+pydantic-settings>=2.5.0
+
+# ── RAG ──
+qdrant-client>=1.12.0
+sentence-transformers>=3.2.0
+FlagEmbedding>=1.2.0
+
+# ── MCP-Unity WebSocket ──
+websockets>=13.0
+
+# ── Utilities ──
+httpx>=0.27.0
+python-dotenv>=1.0.0

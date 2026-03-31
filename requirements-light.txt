@@ -1,0 +1,20 @@
+# ── Lightweight deps — installed during Docker build ──
+
+# Orchestration
+langgraph>=0.2.0
+langchain-core>=0.3.0
+langchain-openai>=0.2.0
+
+# API
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.9.0
+pydantic-settings>=2.5.0
+
+# Clients
+openai>=1.50.0
+qdrant-client>=1.12.0
+websockets>=13.0
+httpx>=0.27.0
+python-dotenv>=1.0.0
+huggingface_hub[cli]>=0.25.0
