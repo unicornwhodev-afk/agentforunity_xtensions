@@ -1,24 +1,56 @@
-# AgentUnity
-
-# Build
-*.pyc
+# AgentUnity & Python Environment
 __pycache__/
+*.py[cod]
+*.class
 *.egg-info/
 dist/
 build/
-
-# Env
-.env
 .venv/
 venv/
+env/
+ENV/
+.env
+.env.*
+!.env.example
 
-# IDE
+# Machine Learning / AI / Models
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.model
+*.engine
+*.plan
+*.safetensors
+*.onnx
+*.gguf
+**/models/
+**/checkpoints/
+**/lora-out/
+**/output/
+**/outputs/
+huggingface/
+.cache/
+
+# Execution & Logs
+*.log
+**/logs/
+**/wandb/
+runs/
+*.tar
+*.tar.gz
+
+# Development Tools
 .vscode/
 .idea/
-
-# Data (local dev only)
-qdrant_data/
+*.swp
+*.suo
 
 # OS
-Thumbs.db
 .DS_Store
+Thumbs.db
+ehthumbs.db
+
+# Project Data
+qdrant_data/
+**/data/
