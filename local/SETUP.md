@@ -165,6 +165,26 @@ cloudflared tunnel --url ws://localhost:8090
 ```
 Puis mettre à jour `MCP_UNITY_WS_URL` dans les env vars du pod RunPod.
 
+## Benchmark Q6 local
+
+Piloter le benchmark Q6 depuis Windows avec le repo training séparé :
+
+```powershell
+cd d:\Dev\Projects\agentunity\local\scripts
+$env:AGENTUNITY_TRAINING_REPO = "D:\path\to\TRAINING-PUBLIC-REPO"
+.\run-q6-benchmark.ps1 -TrainingRepoPath $env:AGENTUNITY_TRAINING_REPO -Mode setup
+.\run-q6-benchmark.ps1 -TrainingRepoPath $env:AGENTUNITY_TRAINING_REPO -Mode all -CaseLimit 1 -MaxNewTokens 128
+```
+
+Le script échoue explicitement si le repo training n'est pas fourni ou ne contient pas le dossier `benchmark/`.
+
+Modes disponibles :
+- `setup` : crée un venv Windows, compile `llama.cpp` avec CUDA et installe `llama-cpp-python`
+- `prepare` : régénère les cas de benchmark
+- `run` : exécute le benchmark Q6
+- `visualize` : génère les rapports markdown, JSON et SVG
+- `all` : enchaîne `prepare`, `run`, puis `visualize`
+
 ## Structure des fichiers Copilot
 
 ```

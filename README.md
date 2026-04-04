@@ -1,40 +1,57 @@
-# AgentforUnity Xtensions (AgentUnity)
+# AgentforUnity Xtensions
 
-AgentUnity is a multi-agent AI system deployed on RunPod and integrated via MCP-Unity to assist in Unity game development (Medieval Fantasy-Horror FPS). This repository contains the tools, AI orchestrators, custom MCP (Model Context Protocol) extensions, RunPod training pipelines, and the knowledge base needed for end-to-end game production using advanced AI workflows.
+This repository is the main application and tooling repo for AgentUnity: the multi-agent backend, the Unity integration bridge, the knowledge base, and the local developer setup used to drive a Unity FPS production workflow.
 
-## Features
+The operational training workflow is no longer vendored in this repository. Fine-tuning, export, Hugging Face publication, and benchmark tooling now live in a separate training repository.
 
-- **Multi-Agent Orchestration**: Powered by LangGraph, enabling specialized AI agents (Level Designer, Gameplay Programmer, DevOps) to collaborate on Unity tasks.
-- **RunPod AI Backend**: Configurations and deployment scripts to host vLLM and RAG pipelines on RunPod GPU instances (Blackwell/NVFP4 compatible).
-- **MCP-Unity Bridge**: A seamless WebSocket bridge connecting VS Code / AI Agents directly to the Unity Editor, allowing agents to manipulate the scene, scripts, and build process.
-- **Fine-Tuning Pipeline**: End-to-end Qwen 3.5 fine-tuning pipeline tailored for Unity game development (using LoRA, TensorRT-LLM, and NVFP4 compilation).
+## Main Scope
+
+- LangGraph-based backend agents and orchestration
+- MCP tooling used to connect editor-side workflows to the AI backend
+- RAG indexing and retrieval services
+- local setup helpers for Unity integration and RunPod connectivity
+- project knowledge base and generation constraints
 
 ## Repository Structure
 
-- `/src/` - Core Python backend (LangGraph agents, RAG indexer/retriever, API, MCP tools).
-- `/kb/` - Comprehensive AI knowledge base, providing agents with rules, architecture constraints, and game design documents.
-- `/local/` - Scripts and Unity extensions (MCP-Unity bridge setup, VS Code configuration).
-- `/setup-train-runpod/` - Dockerfiles and scripts for dataset preparation, Qwen 3.5 model fine-tuning, and NVFP4 compilation on RunPod.
-- `/scripts/` - Execution scripts for downloading models, serving embeddings, and other backend tasks.
+- `/src/` — Python backend code for agents, API, retrieval, and MCP integration
+- `/kb/` — project knowledge base and generation rules
+- `/docs/remote-ai/` — remote runtime architecture and MCP-Unity integration docs
+- `/local/` — local setup scripts, editor integration, and VS Code-related assets
+- `/scripts/` — utility scripts for backend services and model-serving helpers
 
 ## Quick Start
 
-### 1. Backend Deployment (RunPod)
-Refer to the instructions in `/setup-train-runpod/README.md` to build and deploy the training image, fine-tune the model, and prepare the vLLM orchestration environment.
+### Local Unity And Editor Integration
 
-### 2. Local Setup
-1. Mount the `/local/unity-extension/` package directly into your Unity project via the Package Manager.
-2. Initialize the cloudflared tunnel to establish a secure connection with the RunPod backend.
-3. Use the VS Code continue-config to point your AI extensions to the live endpoints. 
-(Detailed instructions in `/local/SETUP.md`)
+1. Mount `/local/unity-extension/` into the Unity project through the Package Manager.
+2. Configure the local tunnel and MCP bridge.
+3. Point your editor-side AI tooling to the configured endpoints.
 
-## Documentation
+Detailed instructions live in `local/SETUP.md`.
 
-Full architectural documentation and workflow plans are available at:
-- `roadmap.md` - Overall project timelines and phases.
-- `planrunpod.md` - Deployment strategy and hardware requirements for the AI backend.
-- `kb/` - Project-specific constraints (e.g., `#region` layouts, DI/ServiceLocator usage) that guide code generation tasks.
+### Backend And Runtime Planning
+
+- `roadmap.md` contains the high-level platform direction.
+- `planrunpod.md` is the short index for runtime deployment notes.
+- `docs/remote-ai/README.md` contains the remote AI architecture overview.
+- `docs/remote-ai/mcp-unity-contract.md` contains the Unity bridge contract.
+- `kb/` contains the project-specific implementation rules used by the agents.
+
+## External Training Repo
+
+The training workflow is maintained in a separate repository.
+
+The Windows benchmark helper in `local/scripts/run-q6-benchmark.ps1` now targets that external repo via `-TrainingRepoPath` or the `AGENTUNITY_TRAINING_REPO` environment variable.
+
+See the README in the training repository for:
+
+- dataset preparation
+- RunPod training pod setup
+- export and Hugging Face publication flow
+- WSL2 NVFP4 benchmark workflow
+- benchmark reports and packaged workspace artifacts
 
 ## License
 
-MIT License / Proprietary (Replace with appropriate license)
+MIT License / Proprietary (replace with the final project license policy)

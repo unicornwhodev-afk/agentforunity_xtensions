@@ -6,6 +6,7 @@ __pycache__/
 dist/
 build/
 .venv/
+.venv-*/
 venv/
 env/
 ENV/
@@ -31,6 +32,7 @@ ENV/
 **/outputs/
 huggingface/
 .cache/
+.tmp-pip-meta/
 
 # Execution & Logs
 *.log
@@ -54,3 +56,4 @@ ehthumbs.db
 # Project Data
 qdrant_data/
 **/data/
+
